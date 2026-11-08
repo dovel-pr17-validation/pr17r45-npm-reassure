@@ -1,0 +1,4 @@
+{
+  "ignorePatterns": [".changeset/**", "**/lib/**"],
+  "trailingComma": "es5"
+}

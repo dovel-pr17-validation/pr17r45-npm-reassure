@@ -1,0 +1,26 @@
+name: Setup Node.js
+description: Setup Node.js
+
+inputs:
+  working-directory:
+    description: The working directory to install dependencies in
+    required: true
+    default: '.'
+
+runs:
+  using: composite
+  steps:
+    - name: Enable Corepack
+      run: corepack enable
+      shell: bash
+
+    - name: Setup Node.js
+      uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+      with:
+        node-version: 22.x
+        cache: 'yarn'
+
+    - name: Install
+      working-directory: ${{ inputs.working-directory }}
+      run: yarn install --immutable
+      shell: bash

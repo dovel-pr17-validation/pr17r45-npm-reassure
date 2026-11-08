@@ -1,0 +1,95 @@
+{
+  "name": "reassure",
+  "version": "1.6.1",
+  "description": "Performance testing companion for React and React Native",
+  "keywords": [
+    "android",
+    "ios",
+    "react-native"
+  ],
+  "homepage": "https://github.com/callstack/reassure#readme",
+  "bugs": {
+    "url": "https://github.com/callstack/reassure/issues"
+  },
+  "license": "MIT",
+  "author": "Maciej Jastrzębski <mdjastrzebski@gmail.com> (https://github.com/mdjastrzebski)",
+  "contributors": [
+    "Jakub Bujko <jakub.bujko@callstack.com> (https://github.com/Xiltyn)",
+    "Tomasz Krzyżowski <tomasz.krzyzowski@callstack.com> (https://github.com/TMaszko)",
+    "Michał Pierzchała <thymikee@gmail.com> (https://github.com/thymikee)"
+  ],
+  "repository": "https://github.com/callstack/reassure",
+  "bin": "lib/commonjs/bin/reassure.js",
+  "source": "src/index.ts",
+  "files": [
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/commonjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/typescript/module/index.d.ts",
+        "default": "./lib/module/index.js"
+      },
+      "require": {
+        "types": "./lib/typescript/commonjs/index.d.ts",
+        "default": "./lib/commonjs/index.js"
+      }
+    },
+    "./bin/reassure": "./lib/commonjs/bin/reassure.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "bob build",
+    "clean": "del lib"
+  },
+  "dependencies": {
+    "@callstack/reassure-cli": "1.6.1",
+    "@callstack/reassure-compare": "1.6.1",
+    "@callstack/reassure-danger": "1.6.1",
+    "@callstack/reassure-measure": "1.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/plugin-transform-flow-strip-types": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-typescript": "^7.29.7",
+    "@babel/runtime": "^7.29.10",
+    "@types/react": "~19.2.17",
+    "del-cli": "^7.0.0",
+    "react-native-builder-bob": "^0.41.0",
+    "typescript": "^6.0.3"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "commonjs",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  }
+}
